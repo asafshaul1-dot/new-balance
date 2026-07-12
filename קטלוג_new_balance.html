@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<style data-omelette-injected>html,body{background:transparent}</style><script data-omelette-injected>(()=>{{const W=new URLSearchParams(location.search).get("theme");if(W==="light"||W==="dark"){document.documentElement.dataset.theme=W}}{const W=()=>{try{if(document.querySelector('meta[name="color-scheme"]'))return;const V=getComputedStyle(document.documentElement).getPropertyValue("color-scheme").trim();if(V&&V!=="normal")return;const z=(j)=>{if(!j)return null;const H=getComputedStyle(j).backgroundColor.match(/^rgba?\(\s*(\d+)[,\s]+(\d+)[,\s]+(\d+)(?:[,\s/]+([\d.]+%?))?\s*\)$/);if(!H)return null;const F=H[4]==null?1:parseFloat(H[4])/(H[4].endsWith("%")?100:1);if(F<0.99)return null;return[+H[1],+H[2],+H[3]]};const G=z(document.body)||z(document.documentElement);if(!G)return;const K=(j)=>{const H=j/255;return H<=0.04045?H/12.92:((H+0.055)/1.055)**2.4};const D=0.2126*K(G[0])+0.7152*K(G[1])+0.0722*K(G[2]);document.documentElement.style.setProperty("color-scheme",D<0.4?"dark":"light")}catch{}};if(document.readyState==="complete")W();else window.addEventListener("load",W)}var b=["https://claude.ai","https://preview.claude.ai","https://5b56bd2c-deed-4e07-a0a0-8824bac52205.claudeusercontent.com"];var p=true;var O=30000;var n=3000;document.addEventListener("DOMContentLoaded",()=>{const W=window.Babel;const V="om-src-id";if(W&&W.registerPlugin&&!(W.availablePlugins&&W.availablePlugins[V])){W.registerPlugin(V,({types:D})=>({visitor:{JSXOpeningElement(j,H){const F=j.node;if(F.name&&F.name.type==="JSXMemberExpression")return;for(let Q=0;Q<F.attributes.length;Q++){const $=F.attributes[Q];if($.type==="JSXAttribute"&&$.name&&$.name.name==="data-om-id")return}const P=H.file&&H.file.opts&&H.file.opts.filename||"?";const R=F.loc&&F.loc.start;const J=`jsx:${P}:${F.start??0}:${R?R.line:0}:${R?R.column+1:0}`;F.attributes.push(D.jsxAttribute(D.jsxIdentifier("data-om-id"),D.stringLiteral(J)))}}}))}const z="om-text-extract";let G=false;if(p&&W&&W.registerPlugin&&!(W.availablePlugins&&W.availablePlugins[z])){const D=window.React;if(D&&D.useSyncExternalStore&&D.createElement){G=true;const j={};const H=new Set;let F=0;window.__omTextO=j;window.__omTextSet=(J)=>{for(const Q in J){const $=J[Q];if($==null)delete j[Q];else j[Q]=$}F++;H.forEach((Q)=>Q())};const P=(J)=>{H.add(J);return()=>H.delete(J)};const R=()=>F;window.__OmT=function J(Q){D.useSyncExternalStore(P,R,R);return D.createElement("span",{"data-om-text":Q.i,className:"__om-t"},Q.i in j?j[Q.i]:Q.children)};W.registerPlugin(z,({types:J})=>{const Q={style:1,script:1,noscript:1,textarea:1,title:1,option:1,text:1,tspan:1,textPath:1};const $={placeholder:1,alt:1,title:1,label:1,"aria-label":1,"aria-description":1,"aria-placeholder":1};const Y=(q,M)=>J.logicalExpression("??",J.memberExpression(J.logicalExpression("||",J.memberExpression(J.identifier("window"),J.identifier("__omTextO")),J.objectExpression([])),J.stringLiteral(q),true),M);const Z=(q)=>q.file&&q.file.opts&&q.file.opts.filename||"?";const B=(q)=>q.file&&q.file.code||"";const U=(q,M)=>{const L=(X)=>X&&X.start!=null&&X.end!=null&&(X.type==="StringLiteral"||X.type==="TemplateLiteral"&&X.expressions.length===0)?[X.start,X.end]:null;const N=L(M);if(N)return N;if(M&&M.type==="Identifier"){const X=q.scope.getBinding(M.name);if(X&&X.constant&&X.path.node.type==="VariableDeclarator"){return L(X.path.node.init)}}return null};const x=(q,M,L)=>{const N=q.node;let X=false;const f=(w,A)=>{X=true;return J.jsxElement(J.jsxOpeningElement(J.jsxIdentifier("__OmT"),[J.jsxAttribute(J.jsxIdentifier("i"),J.stringLiteral(w))],false),J.jsxClosingElement(J.jsxIdentifier("__OmT")),[A],false)};const C=N.children.map((w)=>{if(w.type==="JSXText"){if(w.start==null||w.end==null)return w;const A=L.slice(w.start,w.end);const k=A.length-A.trimStart().length;const u=A.length-A.trimEnd().length;if(k+u>=A.length)return w;return f(`txt:${M}:${w.start+k}:${w.end-u}`,w)}if(w.type==="JSXExpressionContainer"){const A=U(q,w.expression);if(A)return f(`str:${M}:${A[0]}:${A[1]}`,w)}return w});if(X)N.children=C};return{visitor:{JSXOpeningElement(q,M){const L=q.node;const N=Z(M);const X={};for(let f=0;f<L.attributes.length;f++){const C=L.attributes[f];if(C.type!=="JSXAttribute"||!C.name)continue;const w=C.name.name;if(!$[w])continue;if(!C.value||C.value.type!=="StringLiteral")continue;if(C.value.start==null||C.value.end==null)continue;const A=`txt:${N}:${C.value.start}:${C.value.end}`;X[w]=A;C.value=J.jsxExpressionContainer(Y(A,J.stringLiteral(C.value.value)))}if(Object.keys(X).length){L.attributes.push(J.jsxAttribute(J.jsxIdentifier("data-om-text-attrs"),J.stringLiteral(JSON.stringify(X))))}},JSXElement(q,M){const L=q.node.openingElement;const N=L&&L.name&&L.name.name;if(N==="__OmT")return;if(typeof N==="string"&&Q[N])return;x(q,Z(M),B(M))},JSXFragment(q,M){x(q,Z(M),B(M))}}}})}}const K=G?["transform-react-jsx-source",V,z]:["transform-react-jsx-source",V];document.querySelectorAll('script[type="text/babel"],script[type="text/jsx"]').forEach((D,j)=>{const H=D.getAttribute("data-plugins")||"";const F=K.filter((P)=>H.indexOf(P)<0);if(F.length){D.setAttribute("data-plugins",H?`${H},${F.join(",")}`:F.join(","))}if(!D.hasAttribute("data-filename")){D.setAttribute("data-filename",D.getAttribute("src")||`inline-${j}`)}})});var v=window.parent;var g="not editable here — open the project in the Claude Design editor to save";var d=()=>Promise.resolve({persisted:false,noHost:true,reason:g});var S=d;var h="data/storage.json";var i=()=>{try{const W=new URL(document.baseURI);const V=W.pathname.match(/\/projects\/([^/]+)\/serve\//);if(V)return V[1];return W.hostname.split(".")[0]||""}catch{return location.hostname.split(".")[0]||""}};var o=()=>{try{const W=new URL(document.baseURI);const V=W.pathname.indexOf("/serve/");if(V>=0)return W.origin+W.pathname.slice(0,V+"/serve/".length)+h}catch{}return"./"+h};var I=null;var _=()=>{if(!I){I=fetch(o(),{cache:"no-store"}).then((W)=>{if(W.ok)return W.text();return W.status===404?"":null}).catch(()=>null).then((W)=>{if(W===null){I=null;return null}const V=new Map;if(!W)return V;let z;try{z=JSON.parse(W)}catch{console.warn("[omelette.storage] "+h+" is not valid JSON; treating the store as unreadable so a save cannot overwrite the "+"hand-edited bytes. Fix the JSON (or delete the file) to re-enable persistence.");I=null;return null}if(z===null||typeof z!=="object"||Array.isArray(z)){console.warn("[omelette.storage] "+h+" doesn't hold a JSON object; treating the store as unreadable so a save cannot "+"overwrite the hand-edited bytes. Make the top level a JSON object to re-enable persistence.");I=null;return null}const G=z;if("data"in G){const K=G.data;if(K===null||typeof K!=="object"||Array.isArray(K)){console.warn("[omelette.storage] "+h+' has a "data" field that is not a JSON object; treating the store as unreadable so a '+'save cannot overwrite the hand-edited bytes. Make "data" a JSON object to re-enable persistence.');I=null;return null}const D=G._meta;const j=D!==null&&typeof D==="object"?D.project:undefined;if(typeof j==="string"&&j!==""&&j!==i())return V;for(const H of Object.keys(K))V.set(H,K[H]);return V}for(const K of Object.keys(G)){if(K!=="_meta")V.set(K,G[K])}return V})}return I};var y=(W)=>S(h,JSON.stringify({_meta:{project:i(),version:1},data:Object.fromEntries(W)},null,2));var m=Promise.resolve();var T=(W)=>{const V=m.then(W);m=V.then(()=>{return},()=>{return});return V};var s=/sk-(?:ant-)?[A-Za-z0-9_-]{16,}|AKIA[0-9A-Z]{16}|gh[pousr]_[A-Za-z0-9]{20,}|xox[a-z]-[A-Za-z0-9][A-Za-z0-9-]{9,}|AIza[0-9A-Za-z_-]{30,}|-----BEGIN [A-Z ]*PRIVATE KEY-----/;var a=/password|passwd|secret|api[_-]?key|access[_-]?token|auth[_-]?token|credential/i;var r=(W,V,z)=>{if(s.test(V)||a.test(W)&&typeof z==="string"&&z.length>=8){console.warn('[omelette.storage] the value for "'+W+'" looks like a credential. The storage file is a plaintext project file — visible to '+"everyone with project access and copied when the project is duplicated. Do not store secrets here.")}};var l={persisted:false,reason:"could not load the existing store — not overwriting it"};var c={persisted:false,reason:"stored value changed since a failed read — re-read this key before saving"};var E=new Set;var t={get:(W)=>{if(typeof W!=="string"){return Promise.reject(new TypeError("storage.get: key must be a string"))}return T(_).then((V)=>{if(V===null){E.add(W);return null}E.delete(W);if(!V.has(W))return null;const z=V.get(W);return z==null?null:JSON.parse(JSON.stringify(z))})},set:(W,V)=>{if(typeof W!=="string"){return Promise.reject(new TypeError("storage.set: key must be a string"))}let z;try{z=JSON.stringify(V)}catch(K){return Promise.reject(new TypeError("storage.set: value must be JSON-serializable ("+String(K)+")"))}if(z===undefined){return Promise.reject(new TypeError("storage.set: value must be JSON-serializable"))}r(W,z,V);const G=JSON.parse(z);return T(()=>_().then((K)=>{if(K===null)return l;if(E.has(W)){if(K.has(W))return c;E.delete(W)}K.set(W,G);return y(K)}))},delete:(W)=>{if(typeof W!=="string"){return Promise.reject(new TypeError("storage.delete: key must be a string"))}return T(()=>_().then((V)=>{if(V===null)return l;if(E.has(W)){if(V.has(W))return c;E.delete(W)}V.delete(W);return y(V)}))},keys:()=>T(_).then((W)=>W===null?[]:Array.from(W.keys()))};window.omelette={writeFile:(W,V)=>S(W,V).then((z)=>{if(!z.persisted&&!z.noHost){throw new Error(z.reason||"write failed")}}),storage:t};if(v&&v!==window){const W=(J,Q)=>{try{v.postMessage({__omelette_log:true,type:J,data:Q},"*")}catch{}};["log","warn","error"].forEach((J)=>{const Q=console[J];console[J]=(...$)=>{const Y=$.map((Z)=>{try{return typeof Z==="object"?JSON.stringify(Z):String(Z)}catch{try{return String(Z)}catch{return"[unstringifiable]"}}}).join(" ");W(J,Y);Q.apply(console,$)}});window.addEventListener("error",(J)=>{const Q=J.target;if(Q&&Q!==window&&Q.tagName){const $=Q.src||Q.href||"";W("resource_error",`${Q.tagName} failed to load: ${$}`)}else{W("error",`${J.message||"Unknown error"} at ${J.filename||"?"}:${J.lineno||0}:${J.colno||0}`)}},true);window.addEventListener("unhandledrejection",(J)=>{const Q=J.reason;const $=Q instanceof Error?`${Q.message} ${Q.stack}`:String(Q);W("error",`Unhandled rejection: ${$}`)});window.addEventListener("click",(J)=>{if(J.defaultPrevented||J.button!==0)return;if(J.metaKey||J.ctrlKey||J.shiftKey||J.altKey)return;const Q=J.composedPath?J.composedPath():[];const $=["button","input","select","textarea","summary","label"];let Y=null;for(const x of Q){if(!(x instanceof Element))continue;if(x.localName==="a"){if(!(x instanceof HTMLAnchorElement))return;Y=x;break}if($.indexOf(x.localName)!==-1)return}if(!Y)return;if(Y.isContentEditable)return;const Z=Y.closest("[contenteditable]");if(Z&&Z.getAttribute("contenteditable")!=="false")return;const B=(Y.getAttribute("target")||"_self").toLowerCase();if(B!=="_self"&&B!=="_top"&&B!=="_parent")return;let U;try{U=new URL(Y.href)}catch{return}if(U.protocol!=="http:"&&U.protocol!=="https:")return;if(location.origin==="null")return;if(U.origin===location.origin)return;J.preventDefault();window.open(U.href,"_blank","noopener,noreferrer")});const V=()=>{try{v.postMessage({type:"omelette:height",height:document.documentElement.scrollHeight},"*")}catch{}};if(window.ResizeObserver)new ResizeObserver(V).observe(document.documentElement);const z=()=>{V();if(!document.querySelector('script[type="text/babel"],script[type="text/jsx"]'))return;const J=()=>document.getElementById("root")||document.querySelector("body > div[id]");const Q=J()?.firstElementChild??null;let $=0;const Y=()=>{const Z=J();if(Z&&Z.firstElementChild!==Q||++$>30){V();return}setTimeout(Y,100)};setTimeout(Y,100)};if(document.readyState==="complete")z();else window.addEventListener("load",z);const G={};let K=0;const D=(J)=>new Promise((Q,$)=>{if(!b.length){$(new Error("claude.complete: no parent origin"));return}const Y=`c${++K}`;const Z=()=>setTimeout(()=>{delete G[Y];$(new Error(`claude.complete: no data for ${O/1000}s`))},O);const B=Z();G[Y]={resolve:Q,reject:$,text:"",t:B,arm:Z};try{for(const U of b){v.postMessage({__om_api:true,id:Y,body:J},U)}}catch(U){clearTimeout(B);delete G[Y];$(U)}});const j=8;const H=async(J,Q)=>{if(!Array.isArray(J.messages)){throw new Error("claude.complete: tools require a messages array")}const $=J.messages.slice();const Y={...J,tools:J.tools.map((U)=>{if(U===null||typeof U!=="object")return U;const x={};for(const q of Object.keys(U)){if(typeof U[q]!=="function")x[q]=U[q]}return x})};const Z=Y.tool_choice;const B=Z!=null&&(Z.type==="any"||Z.type==="tool")?{...Y,tool_choice:Z.disable_parallel_tool_use!==undefined?{type:"auto",disable_parallel_tool_use:Z.disable_parallel_tool_use}:{type:"auto"}}:Y;for(let U=0;U<j;U++){const x=await D({...U===0?Y:B,messages:$});const q=x.message;const M=q&&Array.isArray(q.content)?q.content:null;const L=M?M.filter((X)=>X?.type==="tool_use"):[];if(q?.stop_reason!=="tool_use"||L.length===0){return x.text}const N=[];for(const X of L){const f=Q.get(X.name);if(!f){N.push({type:"tool_result",tool_use_id:X.id,content:`no handler for tool "${X.name}"`,is_error:true});continue}try{const C=await f(X.input);const w=typeof C==="string"?C:R(C)??"";N.push({type:"tool_result",tool_use_id:X.id,content:w})}catch(C){N.push({type:"tool_result",tool_use_id:X.id,content:String(C?.message??C??"tool handler failed"),is_error:true})}}$.push({role:"assistant",content:M},{role:"user",content:N})}throw new Error(`claude.complete: exceeded ${j} tool turns`)};window.claude={complete(J){const Q=J;if(Q!==null&&typeof Q==="object"&&Array.isArray(Q.tools)&&Q.tools.some(($)=>$!==null&&typeof $==="object"&&typeof $.run==="function")){const $=new Map;for(const Y of Q.tools){if(Y!==null&&typeof Y==="object"&&typeof Y.run==="function"){$.set(String(Y.name),Y.run)}}return H(Q,$)}return D(J).then(($)=>$.text)}};const F={};let P=0;S=(J,Q)=>new Promise(($)=>{if(!b.length){$({persisted:false,noHost:true,reason:g});return}const Y=`f${++P}`;const Z=setTimeout(()=>{delete F[Y];$({persisted:false,noHost:true,reason:g})},n);F[Y]={settle:$,t:Z};try{for(const B of b){v.postMessage({__om_file:true,id:Y,op:"write",path:J,content:Q},B)}}catch{clearTimeout(Z);delete F[Y];$({persisted:false,noHost:true,reason:g})}});const R=(J)=>{try{return JSON.stringify(J)}catch{return JSON.stringify(String(J))}};window.addEventListener("message",(J)=>{if(b.indexOf(J.origin)<0)return;if(J.source!==v)return;const Q=J.data;if(!Q)return;if(Q.type==="omelette-preview-refresh"){if(typeof Q.token!=="string"||!/^[0-9a-f.-]+(\.(rc|pr-[0-9]+))?(\.[0-9]+\.[0-9a-f]{16})?$/.test(Q.token))return;const Z=Math.max(1,Math.floor((Q.expiresAt||0)-Date.now()/1000));document.cookie="__Host-omelette-preview="+Q.token+"; Path=/; Secure; SameSite=None; Partitioned; Max-Age="+Z;return}if(Q.__om_file_r){const Z=F[Q.id];if(!Z)return;clearTimeout(Z.t);delete F[Q.id];Z.settle(Q.ok?{persisted:true}:{persisted:false,reason:Q.error||"write failed"});return}if(Q.__om_api_r){const Z=G[Q.id];if(!Z)return;if(Q.error!=null){clearTimeout(Z.t);delete G[Q.id];Z.reject(new Error(Q.error));return}if(Q.chunk!=null){clearTimeout(Z.t);Z.t=Z.arm();Z.text+=Q.chunk;return}if(Q.done){clearTimeout(Z.t);delete G[Q.id];Z.resolve({text:Q.text!=null?Q.text:Z.text,message:Q.message});return}return}if(!Q.__om_eval)return;const $=Q;const Y=(Z)=>{J.source.postMessage({...Z,__om_eval_r:1,id:$.id},J.origin)};try{const Z=(0,eval)($.code);if(Z&&typeof Z.then==="function"){Z.then((B)=>Y({ok:1,v:R(B)}),(B)=>Y({ok:0,e:String(B)}))}else{Y({ok:1,v:R(Z)})}}catch(Z){Y({ok:0,e:String(Z)})}})}})();
+</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>new balance — קטלוג</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;font-family:'Heebo',system-ui,sans-serif;background:#faf9f7;color:#17140f}
+  .hdr{background:#17140f;color:#fff;padding:14px 18px;position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center}
+  .hdr b{font-size:16px;font-weight:800}
+  .cartBtn{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:20px;padding:7px 14px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit}
+  .grid{padding:14px;display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;max-width:1100px;margin:0 auto 90px}
+  .card{background:#fff;border:1px solid #ece8e2;border-radius:12px;overflow:hidden}
+  .card.hasqty{border-color:#E2480F}
+  .card img{width:100%;height:110px;object-fit:contain;background:#f2efea;display:block}
+  .cbody{padding:8px}
+  .name{font-size:11px;font-weight:700;line-height:1.2;min-height:27px}
+  .sku{font-size:9px;color:#a8a29a;margin:2px 0 5px}
+  .price{font-size:13px;font-weight:800;color:#E2480F;margin-bottom:6px}
+  .sizerow{display:flex;align-items:center;gap:5px;margin-bottom:4px;font-size:11px}
+  .sizerow .lbl{width:28px;font-weight:700}
+  .sizerow .st{color:#a8a29a;width:24px}
+  .stepbtn{width:19px;height:19px;border:1px solid #ddd;border-radius:5px;background:#fff;font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:inherit}
+  .qty{min-width:15px;text-align:center;font-weight:700}
+  .qty.on{color:#E2480F}
+  .inCart{margin-top:6px;font-size:10px;font-weight:700;color:#E2480F;text-align:center;min-height:13px}
+  .fab{position:fixed;bottom:16px;left:16px;right:16px;background:#17140f;color:#fff;border:none;border-radius:12px;padding:14px;font-size:14px;font-weight:800;cursor:pointer;font-family:inherit;box-shadow:0 8px 24px rgba(0,0,0,.25);z-index:20;transition:background .2s}
+  .overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:30;display:none}
+  .overlay.open{display:block}
+  .cartPanel{position:fixed;bottom:0;left:0;right:0;background:#fff;border-radius:16px 16px 0 0;max-height:80vh;overflow-y:auto;z-index:31;transform:translateY(100%);transition:transform .25s;padding:18px}
+  .cartPanel.open{transform:translateY(0)}
+  .cline{border-bottom:1px solid #f1eee9;padding:8px 0;font-size:12px}
+  .cline .sumrow{display:flex;justify-content:space-between;align-items:center;cursor:pointer}
+  .cline .ctrl{display:flex;align-items:center;gap:6px}
+  .cline .sizes{display:none;margin-top:8px;padding-right:8px;border-right:2px solid #ece8e2}
+  .cline.open .sizes{display:block}
+  .cline .sizerow2{display:flex;justify-content:space-between;align-items:center;font-size:11px;padding:4px 0}
+  .rm{background:none;border:none;color:#c33;font-size:16px;cursor:pointer}
+  .total{display:flex;justify-content:space-between;font-size:16px;font-weight:800;padding-top:12px;margin-top:6px;border-top:2px solid #17140f}
+  .send{width:100%;margin-top:14px;padding:12px;background:#25D366;color:#fff;border:none;border-radius:9px;font-weight:800;font-size:13px;cursor:pointer;font-family:inherit}
+  .empty{color:#a8a29a;font-size:12px;text-align:center;padding:20px 0}
+</style>
+</head>
+<body>
+  <div class="hdr"><b>new balance — קטלוג</b><button class="cartBtn" id="openCartTop">🛒 <span id="cartCountTop">0</span></button></div>
+  <div style="padding:12px 14px 0;max-width:1100px;margin:0 auto"><input id="searchBox" type="text" placeholder="חיפוש לפי שם מוצר..." style="width:100%;padding:9px 12px;border:1px solid #ddd;border-radius:9px;font-size:13px;font-family:inherit;box-sizing:border-box"></div>
+  <div class="grid" id="grid"></div>
+  <button class="fab" id="openCartBottom">צפייה בעגלה (<span id="cartCountBottom">0</span> פריטים)</button>
+
+  <div class="overlay" id="overlay"></div>
+  <div class="cartPanel" id="cartPanel">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><b style="font-size:15px">העגלה שלי</b><button onclick="closeCart()" style="background:none;border:none;font-size:18px;cursor:pointer">✕</button></div>
+    <div id="cartLines"></div>
+    <div class="total"><span>סה"כ</span><span id="cartTotalTxt">₪0</span></div>
+    <button class="send" id="sendBtn">שלח הזמנה בוואטסאפ</button>
+  </div>
+
+<script>
+  var DATA = {"brandName":"new balance","products":[{"name":"New Balance 740","sku":"U74078Z","img":"assets/nb/U74078Z.png","basePrice":50,"sym":"€","sizes":[{"s":"40.5","st":24},{"s":"41.5","st":48},{"s":"42","st":48},{"s":"42.5","st":24},{"s":"43","st":48},{"s":"44","st":48},{"s":"45","st":24},{"s":"46.5","st":24}]},{"name":"New Balance 740","sku":"G7402A3","img":"assets/nb/G7402A3.png","basePrice":50,"sym":"€","sizes":[{"s":"36","st":48},{"s":"37","st":48},{"s":"37.5","st":35},{"s":"38","st":36},{"s":"38.5","st":29},{"s":"39","st":37},{"s":"40","st":37}]},{"name":"New Balance 740","sku":"U7402F3","img":"assets/nb/U7402F3.png","basePrice":55,"sym":"€","sizes":[{"s":"36","st":30},{"s":"37","st":24},{"s":"37.5","st":12},{"s":"38","st":24},{"s":"38.5","st":12},{"s":"39.5","st":24},{"s":"40","st":24},{"s":"40.5","st":24}]},{"name":"New Balance 740","sku":"U7407KF","img":"assets/nb/U7407KF.png","basePrice":55,"sym":"€","sizes":[{"s":"36","st":4},{"s":"37","st":4},{"s":"37.5","st":2},{"s":"38","st":4},{"s":"38.5","st":2},{"s":"39.5","st":4},{"s":"40","st":4}]},{"name":"New Balance 740","sku":"U7402B2","img":"assets/nb/U7402B2.png","basePrice":55,"sym":"€","sizes":[{"s":"36","st":30},{"s":"37","st":24},{"s":"37.5","st":12},{"s":"38","st":24},{"s":"38.5","st":12},{"s":"39.5","st":24},{"s":"40","st":24}]},{"name":"New Balance 740","sku":"GR740WM","img":"assets/nb/GR740WM.png","basePrice":50,"sym":"€","sizes":[{"s":"36","st":23},{"s":"37","st":23},{"s":"37.5","st":17},{"s":"38","st":23},{"s":"38.5","st":17},{"s":"39","st":23},{"s":"40","st":23}]},{"name":"New Balance 740","sku":"G7404EK","img":"assets/nb/G7404EK.png","basePrice":50,"sym":"€","sizes":[{"s":"36","st":34},{"s":"37","st":34},{"s":"37.5","st":17},{"s":"38","st":34},{"s":"38.5","st":17},{"s":"39","st":34},{"s":"40","st":34}]},{"name":"New Balance 740","sku":"U740741","img":"assets/nb/U740741.png","basePrice":50,"sym":"€","sizes":[{"s":"40.5","st":17},{"s":"41.5","st":33},{"s":"42","st":33},{"s":"42.5","st":17},{"s":"43","st":33},{"s":"44","st":33},{"s":"45","st":17},{"s":"46.5","st":17}]},{"name":"New Balance 740","sku":"U7405K9","img":"assets/nb/U7405K9.png","basePrice":50,"sym":"€","sizes":[{"s":"40.5","st":28},{"s":"41.5","st":56},{"s":"42","st":56},{"s":"42.5","st":28},{"s":"43","st":56},{"s":"44","st":56},{"s":"45","st":28},{"s":"46.5","st":28}]},{"name":"New Balance 740","sku":"G7407CK","img":"assets/nb/G7407CK.png","basePrice":50,"sym":"€","sizes":[{"s":"36","st":20},{"s":"37","st":19},{"s":"37.5","st":10},{"s":"38","st":19},{"s":"38.5","st":10},{"s":"39","st":20},{"s":"40","st":20}]},{"name":"New Balance 740","sku":"G74058I","img":"assets/nb/G74058I.png","basePrice":50,"sym":"€","sizes":[{"s":"36","st":53},{"s":"37","st":53},{"s":"37.5","st":26},{"s":"38","st":53},{"s":"38.5","st":26},{"s":"39","st":53},{"s":"40","st":53}]},{"name":"New Balance 740","sku":"U740GS2","img":"assets/nb/U740GS2.png","basePrice":50,"sym":"€","sizes":[{"s":"36","st":9},{"s":"37","st":32},{"s":"38","st":4},{"s":"38.5","st":4},{"s":"39.5","st":4},{"s":"40","st":38}]},{"name":"New Balance 740","sku":"GR740BO","img":"assets/nb/GR740BO.png","basePrice":50,"sym":"€","sizes":[{"s":"36","st":38},{"s":"37","st":49},{"s":"37.5","st":25},{"s":"38","st":55},{"s":"38.5","st":22},{"s":"39","st":47},{"s":"40","st":47}]},{"name":"New Balance 740","sku":"U740SN2","img":"assets/nb/U740SN2.png","basePrice":50,"sym":"€","sizes":[{"s":"38","st":12},{"s":"39.5","st":18},{"s":"40","st":8},{"s":"42","st":6},{"s":"43","st":24},{"s":"44.5","st":6}]},{"name":"New Balance 740","sku":"U740NC2","img":"assets/nb/U740NC2.png","basePrice":50,"sym":"€","sizes":[{"s":"40.5","st":21},{"s":"41.5","st":22},{"s":"42","st":47},{"s":"42.5","st":47},{"s":"43","st":47},{"s":"44","st":48},{"s":"44.5","st":22},{"s":"45","st":24}]},{"name":"New Balance 740","sku":"U740BL2","img":"assets/nb/U740BL2.png","basePrice":50,"sym":"€","sizes":[{"s":"40.5","st":31},{"s":"41.5","st":31},{"s":"42","st":68},{"s":"42.5","st":68},{"s":"43","st":68},{"s":"44","st":68},{"s":"44.5","st":33},{"s":"45","st":33}]},{"name":"New Balance 740","sku":"GR740SG","img":"assets/nb/GR740SG.png","basePrice":50,"sym":"€","sizes":[{"s":"36","st":4},{"s":"37","st":8},{"s":"37.5","st":4},{"s":"38","st":11},{"s":"38.5","st":4},{"s":"39","st":7},{"s":"40","st":10}]},{"name":"New Balance 740","sku":"U740YG2","img":"assets/nb/U740YG2.png","basePrice":50,"sym":"€","sizes":[{"s":"40.5","st":28},{"s":"41.5","st":28},{"s":"42","st":56},{"s":"42.5","st":56},{"s":"43","st":56},{"s":"44","st":62},{"s":"44.5","st":28},{"s":"45","st":28}]},{"name":"New Balance 740","sku":"GR740BM","img":"assets/nb/GR740BM.png","basePrice":50,"sym":"€","sizes":[{"s":"36","st":21},{"s":"37","st":48},{"s":"37.5","st":17},{"s":"38","st":76},{"s":"38.5","st":21},{"s":"39","st":39},{"s":"40","st":41}]},{"name":"New Balance 740","sku":"U740HB2","img":"assets/nb/U740HB2.png","basePrice":50,"sym":"€","sizes":[{"s":"40.5","st":3},{"s":"41.5","st":1},{"s":"42","st":8},{"s":"42.5","st":7},{"s":"43","st":7},{"s":"44","st":8},{"s":"44.5","st":3},{"s":"45","st":4}]},{"name":"New Balance 740","sku":"U740BO2","img":"assets/nb/U740BO2.jpg","basePrice":50,"sym":"€","sizes":[{"s":"40.5","st":5},{"s":"41.5","st":3},{"s":"42","st":9},{"s":"42.5","st":6},{"s":"43","st":6},{"s":"44","st":6},{"s":"44.5","st":4},{"s":"45","st":1}]},{"name":"New Balance 740","sku":"U740RS2","img":"assets/nb/U740RS2.png","basePrice":50,"sym":"€","sizes":[{"s":"40.5","st":16},{"s":"41.5","st":15},{"s":"42","st":32},{"s":"42.5","st":32},{"s":"43","st":32},{"s":"44","st":32},{"s":"44.5","st":16},{"s":"45","st":15}]},{"name":"New Balance 740","sku":"U740SF2","img":"assets/nb/U740SF2.png","basePrice":50,"sym":"€","sizes":[{"s":"41.5","st":2},{"s":"42","st":3},{"s":"43","st":4},{"s":"44","st":2},{"s":"46.5","st":2}]},{"name":"New Balance 740","sku":"U740BD2","img":"assets/nb/U740BD2.png","basePrice":50,"sym":"€","sizes":[{"s":"40.5","st":30},{"s":"41.5","st":30},{"s":"42","st":60},{"s":"42.5","st":60},{"s":"43","st":60},{"s":"44","st":60},{"s":"44.5","st":30},{"s":"45","st":30}]},{"name":"New Balance 740","sku":"U740SG2","img":"assets/nb/U740SG2.png","basePrice":50,"sym":"€","sizes":[{"s":"36","st":3},{"s":"37","st":9},{"s":"38","st":10},{"s":"38.5","st":4},{"s":"39.5","st":10},{"s":"40","st":11},{"s":"40.5","st":1},{"s":"41.5","st":4},{"s":"42","st":11},{"s":"42.5","st":7},{"s":"43","st":16},{"s":"44","st":15},{"s":"44.5","st":5},{"s":"45","st":4},{"s":"46.5","st":7}]},{"name":"New Balance 740","sku":"U740GH2","img":"assets/nb/U740GH2.png","basePrice":50,"sym":"€","sizes":[{"s":"40.5","st":8},{"s":"41.5","st":9},{"s":"42","st":18},{"s":"42.5","st":17},{"s":"43","st":17},{"s":"44","st":16},{"s":"44.5","st":8},{"s":"45","st":8}]},{"name":"New Balance 530","sku":"GR530PA","img":"assets/nb/GR530PA.png","basePrice":50,"sym":"€","sizes":[{"s":"36","st":18},{"s":"37","st":18},{"s":"37.5","st":12},{"s":"38","st":18},{"s":"38.5","st":12},{"s":"39","st":18},{"s":"40","st":18}]},{"name":"New Balance 530","sku":"G5302EG","img":"assets/nb/G5302EG.png","basePrice":50,"sym":"€","sizes":[{"s":"36","st":56},{"s":"37","st":56},{"s":"37.5","st":25},{"s":"38","st":56},{"s":"38.5","st":25},{"s":"39","st":56},{"s":"40","st":56}]},{"name":"New Balance 530","sku":"G5301MV","img":"assets/nb/G5301MV.png","basePrice":50,"sym":"€","sizes":[{"s":"36","st":60},{"s":"37","st":60},{"s":"37.5","st":30},{"s":"38","st":60},{"s":"38.5","st":30},{"s":"39","st":60},{"s":"40","st":60}]},{"name":"New Balance 530","sku":"G5306J4","img":"assets/nb/G5306J4.png","basePrice":50,"sym":"€","sizes":[{"s":"36","st":46},{"s":"37","st":46},{"s":"37.5","st":23},{"s":"38","st":46},{"s":"38.5","st":23},{"s":"39","st":46},{"s":"40","st":46}]},{"name":"New Balance 530","sku":"G530919","img":"assets/nb/G530919.png","basePrice":50,"sym":"€","sizes":[{"s":"36","st":44},{"s":"37","st":40},{"s":"37.5","st":30},{"s":"38","st":40},{"s":"38.5","st":30},{"s":"39","st":40},{"s":"40","st":40}]},{"name":"New Balance 530","sku":"GR530PB","img":"assets/nb/GR530PB.jpg","basePrice":50,"sym":"€","sizes":[{"s":"36","st":33},{"s":"37","st":35},{"s":"37.5","st":18},{"s":"38","st":35},{"s":"38.5","st":18},{"s":"39","st":35},{"s":"40","st":35}]},{"name":"New Balance 530","sku":"G5306DH","img":"assets/nb/G5306DH.png","basePrice":50,"sym":"€","sizes":[{"s":"36","st":40},{"s":"37","st":40},{"s":"37.5","st":25},{"s":"38","st":40},{"s":"38.5","st":52},{"s":"39","st":80},{"s":"40","st":80}]},{"name":"New Balance 530","sku":"G5308S1","img":"assets/nb/G5308S1.png","basePrice":50,"sym":"€","sizes":[{"s":"36","st":60},{"s":"37","st":60},{"s":"37.5","st":30},{"s":"38","st":60},{"s":"38.5","st":30},{"s":"39","st":60},{"s":"40","st":60}]},{"name":"New Balance 530","sku":"U5303IR","img":"assets/nb/U5303IR.png","basePrice":60,"sym":"€","sizes":[{"s":"36","st":8},{"s":"37","st":5},{"s":"37.5","st":5},{"s":"38","st":3},{"s":"38.5","st":3},{"s":"39.5","st":5},{"s":"40","st":1},{"s":"40.5","st":5}]},{"name":"New Balance 530","sku":"U53022Q","img":"assets/nb/U53022Q.png","basePrice":60,"sym":"€","sizes":[{"s":"36","st":20},{"s":"37","st":14},{"s":"37.5","st":14},{"s":"38","st":8},{"s":"38.5","st":9},{"s":"39.5","st":14},{"s":"40","st":2},{"s":"40.5","st":14}]},{"name":"New Balance 530","sku":"MR530CC","img":"assets/nb/MR530CC.png","basePrice":60,"sym":"€","sizes":[{"s":"36","st":5},{"s":"37","st":15},{"s":"37.5","st":21},{"s":"38","st":25},{"s":"38.5","st":25},{"s":"39.5","st":10},{"s":"40","st":10},{"s":"40.5","st":8},{"s":"41.5","st":15},{"s":"42","st":14},{"s":"42.5","st":14},{"s":"43","st":9},{"s":"44","st":12},{"s":"44.5","st":6},{"s":"45","st":5}]}]};
+  var WA_NUMBER = '972547973415';
+  var cart = [];   // {pid, sizeIdx, qty}
+  var grid = document.getElementById('grid');
+
+  // --- sort sizes small -> large (handles plain numbers, half/third fractions, ranges like "5-6", and S/M/L) ---
+  var APPAREL = ['XXS','XS','S','M','L','XL','XXL','XXXL','2XL','3XL'];
+  var FRACS = {'⅓':1/3,'⅔':2/3,'½':1/2,'⅕':.2,'⅖':.4,'⅗':.6,'⅘':.8,'⅙':1/6,'⅚':5/6,'⅛':.125,'⅜':.375,'⅝':.625,'⅞':.875};
+  function sizeKey(label){
+    var s = String(label).trim();
+    var up = s.toUpperCase();
+    var ai = APPAREL.indexOf(up);
+    if (ai >= 0) return 10000 + ai;
+    var range = s.match(/^(\d+(\.\d+)?)\s*-\s*\d+/);
+    if (range) return parseFloat(range[1]);
+    var frac = s.match(/^(\d+(\.\d+)?)([⅓⅔½⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞]?)$/);
+    if (frac) return parseFloat(frac[1]) + (frac[3] ? (FRACS[frac[3]]||0) : 0);
+    var num = parseFloat(s.replace(',', '.'));
+    if (!isNaN(num) && /^[\d.,]+$/.test(s)) return num;
+    return 99999;
+  }
+  DATA.products.forEach(function(p){ p.sizes.sort(function(a,b){ return sizeKey(a.s) - sizeKey(b.s); }); });
+
+  function getCartQty(pid, si){ var c = cart.find(function(x){return x.pid==pid && x.sizeIdx==si;}); return c ? c.qty : 0; }
+
+  function setCartQty(pid, si, qty){
+    var p = DATA.products[pid];
+    qty = Math.max(0, Math.min(p.sizes[si].st, qty));
+    var c = cart.find(function(x){return x.pid==pid && x.sizeIdx==si;});
+    if (qty === 0) { if (c) cart = cart.filter(function(x){return x!==c;}); }
+    else if (c) { c.qty = qty; }
+    else { cart.push({pid:pid, sizeIdx:si, qty:qty}); }
+    var el = document.getElementById('q-'+pid+'-'+si);
+    if (el) { el.textContent = qty; el.className = 'qty' + (qty>0 ? ' on' : ''); }
+    updateCardBadge(pid);
+    renderCart();
+  }
+
+  function updateCardBadge(pid){
+    var p = DATA.products[pid];
+    var total = 0;
+    for (var si=0; si<p.sizes.length; si++) total += getCartQty(pid, si);
+    var card = grid.querySelector('.card[data-pid="'+pid+'"]');
+    if (!card) return;
+    card.classList.toggle('hasqty', total>0);
+    var badge = card.querySelector('.inCart');
+    if (badge) badge.textContent = total>0 ? ('בעגלה: '+total+' יח׳') : '';
+  }
+
+  DATA.products.forEach(function(p, pi){
+    var card = document.createElement('div'); card.className='card'; card.dataset.pid = pi;
+    var img = document.createElement('img'); img.src = p.img; card.appendChild(img);
+    var body = document.createElement('div'); body.className='cbody';
+    body.innerHTML = '<div class="name">'+p.name+'</div><div class="sku">'+p.sku+'</div><div class="price">'+(p.sym||'₪')+p.basePrice+'</div>';
+    p.sizes.forEach(function(s, si){
+      var row = document.createElement('div'); row.className='sizerow';
+      row.innerHTML = '<span class="lbl">'+s.s+'</span><span class="st">('+s.st+')</span>' +
+        '<button class="stepbtn" data-act="dec" data-p="'+pi+'" data-s="'+si+'">−</button>' +
+        '<span class="qty" id="q-'+pi+'-'+si+'">0</span>' +
+        '<button class="stepbtn" data-act="inc" data-p="'+pi+'" data-s="'+si+'">+</button>';
+      body.appendChild(row);
+    });
+    var badge = document.createElement('div'); badge.className='inCart';
+    body.appendChild(badge);
+    card.appendChild(body); grid.appendChild(card);
+    card.dataset.searchtext = (p.name + ' ' + p.sku).toLowerCase();
+  });
+
+  document.getElementById('searchBox').addEventListener('input', function(e){
+    var q = e.target.value.trim().toLowerCase();
+    grid.querySelectorAll('.card').forEach(function(card){
+      card.style.display = !q || card.dataset.searchtext.indexOf(q) >= 0 ? '' : 'none';
+    });
+  });
+
+  grid.addEventListener('click', function(e){
+    var t = e.target;
+    if (!t.dataset.act) return;
+    var pi = t.dataset.p, si = t.dataset.s;
+    var cur = getCartQty(pi, si);
+    setCartQty(pi, si, t.dataset.act === 'inc' ? cur+1 : cur-1);
+  });
+
+  function renderCart(){
+    var count = cart.reduce(function(a,c){return a+c.qty;}, 0);
+    document.getElementById('cartCountTop').textContent = count;
+    document.getElementById('cartCountBottom').textContent = count;
+    var linesEl = document.getElementById('cartLines');
+    if (!cart.length) { linesEl.innerHTML = '<div class="empty">העגלה ריקה</div>'; document.getElementById('cartTotalTxt').textContent='₪0'; return; }
+    var total = 0;
+    var byPid = {};
+    cart.forEach(function(c){ if(!byPid[c.pid]) byPid[c.pid]=[]; byPid[c.pid].push(c); });
+    linesEl.innerHTML = Object.keys(byPid).map(function(pid){
+      var group = byPid[pid]; var p = DATA.products[pid];
+      var groupQty = group.reduce(function(a,c){return a+c.qty;},0);
+      var groupTotal = group.reduce(function(a,c){return a+c.qty*p.basePrice;},0);
+      total += groupTotal;
+      var sizesHtml = group.map(function(c){
+        var s = p.sizes[c.sizeIdx];
+        return '<div class="sizerow2"><span>מידה '+s.s+'</span><div class="ctrl">' +
+          '<button class="stepbtn" data-pid="'+pid+'" data-si="'+c.sizeIdx+'" data-cact="dec">−</button><b>'+c.qty+'</b><button class="stepbtn" data-pid="'+pid+'" data-si="'+c.sizeIdx+'" data-cact="inc">+</button>' +
+          '<button class="rm" data-pid="'+pid+'" data-si="'+c.sizeIdx+'" data-cact="rm">✕</button></div></div>';
+      }).join('');
+      return '<div class="cline" data-pid="'+pid+'">' +
+        '<div class="sumrow" data-toggle="'+pid+'"><div><b>'+p.sku+'</b><div style="font-size:10px;color:#a8a29a">'+p.name+'</div></div>' +
+        '<div class="ctrl"><span>×'+groupQty+'</span><span style="min-width:56px;text-align:left;font-weight:700">'+(p.sym||'₪')+groupTotal+'</span><span style="font-size:10px;color:#a8a29a">▾</span></div></div>' +
+        '<div class="sizes">'+sizesHtml+'</div></div>';
+    }).join('');
+    document.getElementById('cartTotalTxt').textContent = '₪'+total;
+  }
+  document.getElementById('cartLines').addEventListener('click', function(e){
+    var t = e.target;
+    if (t.dataset.toggle != null) { t.closest('.cline').classList.toggle('open'); return; }
+    if (!t.dataset.cact) return;
+    var pid = t.dataset.pid, si = t.dataset.si;
+    var cur = getCartQty(pid, si);
+    if (t.dataset.cact === 'inc') setCartQty(pid, si, cur+1);
+    else if (t.dataset.cact === 'dec') setCartQty(pid, si, cur-1);
+    else if (t.dataset.cact === 'rm') setCartQty(pid, si, 0);
+  });
+
+  function openCart(){ document.getElementById('overlay').classList.add('open'); document.getElementById('cartPanel').classList.add('open'); }
+  function closeCart(){ document.getElementById('overlay').classList.remove('open'); document.getElementById('cartPanel').classList.remove('open'); }
+  document.getElementById('openCartTop').onclick = openCart;
+  document.getElementById('openCartBottom').onclick = openCart;
+  document.getElementById('overlay').onclick = closeCart;
+
+  document.getElementById('sendBtn').onclick = function(){
+    if (!cart.length) { alert('העגלה ריקה'); return; }
+    var lines = [], total = 0;
+    var csvRows = [['מק"ט','שם','מידה','כמות','מחיר יחידה','סה"כ שורה']];
+    cart.forEach(function(c){
+      var p = DATA.products[c.pid]; var s = p.sizes[c.sizeIdx]; var lt = c.qty * p.basePrice; total += lt;
+      lines.push('• '+p.name+' | מידה '+s.s+' ×'+c.qty+' — '+(p.sym||'₪')+lt);
+      csvRows.push([p.sku, p.name, s.s, c.qty, p.basePrice, lt]);
+    });
+    csvRows.push(['','','','','סה"כ', total]);
+    var csv = csvRows.map(function(r){ return r.map(function(v){ v = String(v==null?'':v); return /[",\n]/.test(v) ? '"'+v.replace(/"/g,'""')+'"' : v; }).join(','); }).join('\r\n');
+    var csvBlob = new Blob(['\ufeff'+csv], {type:'text/csv;charset=utf-8'});
+    var csvUrl = URL.createObjectURL(csvBlob);
+    var dl = document.createElement('a'); dl.href = csvUrl; dl.download = 'הזמנה_'+DATA.brandName.replace(/\s+/g,'_')+'.csv'; document.body.appendChild(dl); dl.click(); dl.remove();
+    var txt = 'הזמנה מקטלוג '+DATA.brandName+'\\n\\n'+lines.join('\\n')+'\\n\\nסה"כ: ₪'+total+'\\n\\n📎 מצורף קובץ אקסל מסודר (מק"ט/מידה/כמות) — הורד עכשיו למכשיר, נא לצרף אותו כאן בוואטסאפ.';
+    setTimeout(function(){ window.open('https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent(txt), '_blank'); }, 400);
+  };
+
+  renderCart();
+</script>
+</body>
+</html>
